@@ -1,0 +1,24 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; background: #0b1220; color: white; }
+
+.bar {
+  position: sticky; top: 0;
+  display: flex; align-items: center; gap: 16px;
+  padding: 12px 14px;
+  background: rgba(10,16,30,0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.title { font-weight: 650; letter-spacing: 0.2px; }
+.ui :is(button) {
+  padding: 8px 10px; border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.08);
+  color: white;
+  cursor: pointer;
+}
+.ui button:hover { background: rgba(255,255,255,0.12); }
+
+.stage { display: grid; place-items: center; padding: 18px; }
+.canvasWrap canvas { display: block; border-radius: 14px; overflow: hidden; }
