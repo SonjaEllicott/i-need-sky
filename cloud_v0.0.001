@@ -1,3 +1,6 @@
+//This code is only for the p5.js web editor.
+
+
 // Phase 1 (fixed): Origin-based cloud generator
 // - Each cloud is generated in local space around (0,0), then placed via translate(originX, originY)
 // - No noLoop/redraw issues: we render on demand via renderScene()
