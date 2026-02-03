@@ -3,22 +3,54 @@ body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial
 
 .bar {
   position: sticky; top: 0;
-  display: flex; align-items: center; gap: 16px;
-  padding: 12px 14px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
   background: rgba(10,16,30,0.8);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 .title { font-weight: 650; letter-spacing: 0.2px; }
-.ui :is(button) {
-  padding: 8px 10px; border-radius: 10px;
+
+.ui{
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.ui button{
+  padding: 10px 12px;
+  border-radius: 12px;
   border: 1px solid rgba(255,255,255,0.14);
   background: rgba(255,255,255,0.08);
   color: white;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
-.ui button:hover { background: rgba(255,255,255,0.12); }
 
-.stage { display: grid; place-items: center; padding: 18px; }
-.canvasWrap canvas { display: block; border-radius: 14px; overflow: hidden; }
+.stage{
+  display: grid;
+  place-items: center;
+  padding: 14px;
+}
+
+.canvasWrap{
+  width: min(96vw, 980px);
+}
+
+.canvasWrap canvas{
+  width: 100% !important;   /* let CSS scale it */
+  height: auto !important;
+  display: block;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* Phone: stack title + buttons cleanly */
+@media (max-width: 560px){
+  .bar{ flex-direction: column; align-items: stretch; }
+  .ui{ justify-content: flex-start; }
+  .ui button{ flex: 1 1 auto; }
+}
