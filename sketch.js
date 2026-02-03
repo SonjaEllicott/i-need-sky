@@ -6,8 +6,19 @@
 let seed = 1;
 let showOrigin = false;
 
+function getCanvasSize() {
+  const wrap = document.getElementById("canvasWrap");
+  const w = wrap ? wrap.clientWidth : window.innerWidth;
+
+  // Keep a nice aspect ratio (3:2). Clamp so it doesn't get enormous.
+  const cw = Math.min(w, 980);
+  const ch = Math.round(cw * 2 / 3);
+  return { cw, ch };
+}
+
 function setup() {
-  const c = createCanvas(900, 600);
+  const { cw, ch } = getCanvasSize();
+  const c = createCanvas(cw, ch);
   c.parent("canvasWrap");
 
   const ui = select("#ui");
@@ -17,6 +28,12 @@ function setup() {
   createButton("Save PNG").parent(ui).mousePressed(() => saveCanvas("cloud", "png"));
 
   renderCumulus();
+}
+
+function windowResized() {
+  const { cw, ch } = getCanvasSize();
+  resizeCanvas(cw, ch);
+  renderCumulus(); // or re-render your "last generated" cloud
 }
 
 // functions below
